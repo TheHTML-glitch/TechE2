@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Sustainable Actions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #2c7a7b;
+        }
+        .progress-container {
+            margin: 20px auto;
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #2c7a7b;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>100 Sustainable Actions Checklist</h1>
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-bar">0%</div>
+    </div>
+    <ul id="checklist">
+        <!-- Add 100 actions -->
+        <!-- Example actions -->
+        <li><input type="checkbox">Switch to LED bulbs</li>
+        <li><input type="checkbox">Plant a tree</li>
+        <li><input type="checkbox">Recycle paper and plastic</li>
+        <li><input type="checkbox">Compost food waste</li>
+        <li><input type="checkbox">Use reusable water bottles</li>
+        <!-- Add remaining 95 items here -->
+    </ul>
+    <script>
+        const checklist = document.getElementById('checklist');
+        const progressBar = document.getElementById('progress-bar');
+        const totalItems = 100;
+
+        // Dynamically add 95 more actions
+        for (let i = 6; i <= totalItems; i++) {
+            const li = document.createElement('li');
+            li.innerHTML = `<input type="checkbox"> Sustainable action ${i}`;
+            checklist.appendChild(li);
+        }
+
+        // Function to update the progress bar
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const progressPercentage = Math.round((checkedCount / totalItems) * 100);
+
+            progressBar.style.width = `${progressPercentage}%`;
+            progressBar.textContent = `${progressPercentage}%`;
+        }
+
+        // Attach event listeners to all checkboxes
+        checklist.addEventListener('change', updateProgress);
+    </script>
+</body>
+</html>
